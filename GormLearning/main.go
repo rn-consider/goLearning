@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"gormlearning/dao"
 	"os"
 )
@@ -10,7 +9,7 @@ func main() {
 	err := dao.InitMySQL()
 	file, err := os.Create("./issuccess.txt")
 	if err != nil {
-		fmt.Println(err)
+		panic(err)
 	}
 	file.Write([]byte("success"))
 
