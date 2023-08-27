@@ -1,21 +1,25 @@
 package main
 
 import (
+	"fmt"
 	"gormlearning/dao"
-	"gormlearning/models"
-	"time"
+	"os"
 )
 
 func main() {
 	err := dao.InitMySQL()
+	file, err := os.Create("./issuccess.txt")
 	if err != nil {
-		panic(err)
+		fmt.Println(err)
 	}
+	file.Write([]byte("success"))
+
+	defer file.Close()
 	defer dao.Close()
 	dao.DB.AutoMigrate()
-	user1 := models.User{Name: "Jinzhu", Age: 18, Birthday: time.Now()}
-	models.CreateUser(&user1)
-	models.DeleteUser(int(user1.ID))
+	//user1 := models.User{Name: "Jinzhu", Age: 18, Birthday: time.Now()}
+	//models.CreateUser(&user1)
+	//models.DeleteUser(int(user1.ID))
 	/*
 		//增加数据做法
 		user1 := models.User{Name: "Jinzhu", Age: 18, Birthday: time.Now()}
