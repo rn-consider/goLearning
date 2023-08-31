@@ -7,7 +7,7 @@ import (
 
 func main() {
 	err := dao.InitMySQL()
-	file, err := os.Create("./issuccess.txt")
+	file, err := os.Create("./issucc ess.txt")
 	if err != nil {
 		panic(err)
 	}
